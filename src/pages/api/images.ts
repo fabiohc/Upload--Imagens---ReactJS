@@ -46,6 +46,8 @@ export default async function handler(
           .status(501)
           .json({ error: `Sorry something Happened! ${err.message}` })
       );
+
+      console.log('Result chamada: ', JSON.stringify(client, null, 2));
   }
 
   if (req.method === 'GET') {
@@ -72,7 +74,7 @@ export default async function handler(
           ts: item.ts,
           id: item.ref.id,
         }));
-
+        console.log('Result chamada: ', JSON.stringify(formattedData, null, 2));
         return res.json({
           data: formattedData,
           after: response.after ? response.after[0].id : null,
